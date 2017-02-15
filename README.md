@@ -6,6 +6,10 @@
 ## 添加说明
 
 build.gradle配置
+
+
+
+
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.2'
         classpath 'org.quanqi:pgyer:0.1.2'
@@ -14,7 +18,10 @@ build.gradle配置
         // in the individual module build.gradle files
     }
 	
-build.gradle(app)配置	
+build.gradle(app)配置
+
+
+
 	apply plugin: 'com.android.application'
 	apply plugin: 'org.quanqi.pgyer'
 
