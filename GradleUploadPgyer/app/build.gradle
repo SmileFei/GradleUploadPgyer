@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.quanqi.pgyer'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+
+    //禁止AS对png图片进行校验
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+
+
+    defaultConfig {
+        applicationId "gomore.com.gradleuploadpgyer"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {//正式版
+            manifestPlaceholders = [icon: "@mipmap/ic_launcher"]//替换manifest文件中的配置
+            resValue "string", "app_name", "正式版上传软件"
+            minifyEnabled false //混淆
+            zipAlignEnabled true
+            shrinkResources true//无效资源不要打包进release版本
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {//开发版
+            manifestPlaceholders = [icon: "@mipmap/ic_launcher2"]
+            resValue "string", "app_name", "开发版上传软件"
+            minifyEnabled false
+            zipAlignEnabled true
+            shrinkResources true
+        }
+        dev {//测试版
+            manifestPlaceholders = [icon: "@mipmap/ic_launcher3"]
+            resValue "string", "app_name", "测试版上传软件"
+            minifyEnabled false
+            zipAlignEnabled true
+            shrinkResources true
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
+}
+
+pgyer {
+        _api_key = "a1d1b0ca2e62ea672981ab4781514583"
+        uKey = "e50ffe38c7d6e0d6028a032c9eea16da"
+}
+apks {
+    debug {
+        sourceFile = file('build/outputs/apk/app-dev-unsigned.apk')
+    }
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:design:25.1.0'
+}
