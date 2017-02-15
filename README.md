@@ -31,8 +31,8 @@ build.gradle(app)配置
 	
 	
 	pgyer {
-        _api_key = "a1d1b0ca2e62ea672981ab4781514583"
-        uKey = "e50ffe38c7d6e0d6028a032c9eea16da"
+        _api_key = "你的蒲公英_api_key"
+        uKey = "你的蒲公英uKey"
 		}
 	apks {
 		debug {
